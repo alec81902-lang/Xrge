@@ -1,3 +1,4 @@
+
 do
 local getinfo = getinfo or debug.getinfo
 local DEBUG = false
@@ -55,7 +56,6 @@ local Old; Old = hookfunction(getrenv().debug.info, newcclosure(function(...)
     return Old(...)
 end))
 
-
 setthreadidentity(7)
 end
 
@@ -103,8 +103,7 @@ end
                 ["Cum"] = nil,
                 ["Explosion"] = nil,
                 ["Slash"] = nil,
-                ["Atomic Effects"] = nil,
-            },
+                ["Atomic Effects"] = nil},
             Gun = {
                 PreviousGun = nil,
                 PreviousAmmo = 999,
@@ -207,9 +206,7 @@ end
                     Color = Color3.new(1, 1, 1)
                 },
                 Radius = 80
-            },
-            ,
-            Air = {
+            }Air = {
                 Enabled = true,
                 AirAimPart = {
                     Enabled = false,
@@ -220,94 +217,7 @@ end
                     Offset = 0
                 }
             }
-        },
-        Visuals = {
-            Backtrack = {
-                Enabled = true,
-                Color = Color3.fromRGB(255,255,255),
-                Method = "Folllow",
-                Transparency = 0.5,
-                Material = "Plastic",
-            },
-            BulletTracers = {
-                Enabled = false,
-                Color = {
-                    Gradient1 = Color3.new(1, 1, 1),
-                    Gradient2 = Color3.new(0, 0, 0)
-                },
-                Duration = 1,
-                Fade = {
-                    Enabled = false,
-                    Duration = 0.5
-                }
-            },
-            BulletImpacts = {
-                Enabled = false,
-                Color = Color3.new(1, 1, 1),
-                Duration = 1,
-                Size = 1,
-                Material = "SmoothPlastic",
-                Fade = {
-                    Enabled = false,
-                    Duration = 0.5
-                }
-            },
-            OnHit = {
-                Enabled = false,
-                Effect = {
-                    Enabled = false,
-                    Color = Color3.new(1, 1, 1)
-                },
-                Sound = {
-                    Enabled = false,
-                    Volume = 5,
-                    Value = "hentai4.wav"
-                },
-                Chams = {
-                    Enabled = false,
-                    Color = Color3.fromRGB(255,209,220),
-                    Material = "ForceField",
-                    Duration = 1
-                }
-            },
-            World = {
-                Enabled = false,
-                Fog = {
-                    Enabled = false,
-                    Color = Color3.fromRGB(255,209,220),
-                    End = 1000,
-                    Start = 10000
-                },
-                Ambient = {
-                    Enabled = false,
-                    Color = Color3.fromRGB(255,209,220)
-                },
-                Brightness = {
-                    Enabled = false,
-                    Value = 0
-                },
-                ClockTime = {
-                    Enabled = false,
-                    Value = 24
-                },
-                WorldExposure = {
-                    Enabled = false,
-                    Value = -0.1
-                }
-            },
-            Crosshair = {
-                Enabled = false,
-                StickToTarget = false,
-                Color = Color3.new(1, 1, 1),
-                Size = 10,
-                Gap = 2,
-                Rotation = {
-                    Enabled = false,
-                    Speed = 1
-                }
-            }
-        },
-        AntiAim = {
+        }AntiAim = {
             XHAHAHAHA = false,
             XHAHAHAHA2 = false,
             XHAHAHAHA3 = false,
@@ -358,19 +268,16 @@ end
                 FFlags = {"S2PhysicsSenderRate"}, 
                 SetNewAmount = 1,
                 Amount = 1
-            },
-        },
+            }},
         Misc = {
             Movement = {
                 Macro = {
                     Enabled = false,
-                    Speed = 0.1,
-                },
+                    Speed = 0.1},
                 Speed = {
                     Enabled = false,
                     Amount = 1
-                },
-            },
+                }},
             Exploits = {
                 Enabled = false,
                 NoRecoil = false,
@@ -449,7 +356,6 @@ game:GetService("RunService").RenderStepped:Connect(function()
 end)
 end
 
-
 local ZPred = tonumber(XrgeLol.Combat.Prediction.Horizontal)
 
 local placemarker = Instance.new("Part", game.Workspace)
@@ -478,8 +384,6 @@ function makemarker(Parent, Adornee, Color, Size, Size2)
 end
 
 makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
-
-
 
     
     do
@@ -582,15 +486,13 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
                     end
                 end
 
-
                 return Info
             end
 
             XrgeTables.Functions.Beam = function(StartPos: Vector3, EndPos: Vector3)
                 local ColorSequence = ColorSequence.new({
                     ColorSequenceKeypoint.new(0, XrgeLol.Visuals.BulletTracers.Color.Gradient1),
-                    ColorSequenceKeypoint.new(1, XrgeLol.Visuals.BulletTracers.Color.Gradient2),
-                })
+                    ColorSequenceKeypoint.new(1, XrgeLol.Visuals.BulletTracers.Color.Gradient2)})
                 local Part = Instance.new("Part", XrgeTables.AuraIgnoreFolder)
                 Part.Size = Vector3.new(0, 0, 0)
                 Part.Massless = true
@@ -688,7 +590,6 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
                 return ClosestPlayer
             end
 
-
             XrgeTables.Functions.Effect = function(Part, Color)
                 local Clone = XrgeTables.Locals.HitEffect[HitEffectsHAHAHHA]:Clone()
                 Clone.Parent = Part
@@ -698,8 +599,7 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
                         Effect.Color = ColorSequence.new({
                             ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
                             ColorSequenceKeypoint.new(0.495, XrgeLol.Visuals.OnHit.Effect.Color),
-                            ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
-                        })
+                            ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))})
                         Effect:Emit()
                     end
                 end
@@ -913,12 +813,10 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
                 local DotShow = IsTargetting and crosshair.sticky or false
                 local ChamsShow = IsTargetting and XrgeLol.Combat.Visuals.Chams.Enabled and XrgeTables.Locals.Target and XrgeTables.Locals.Target.Character or nil
 
-
                 
                 XrgeTables.Utility.Drawings["TargetTracer"].Visible = TracerShow
                 XrgeTables.Utility.Drawings["TargetDot"].Visible = DotShow
                 XrgeTables.Utility.Drawings["TargetChams"].Parent = ChamsShow
-
 
                 
                 if TracerShow then
@@ -1066,7 +964,6 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
                 local ShowVisualizerDot = XrgeLol.AntiAim.VelocitySpoofer.Enabled and XrgeLol.AntiAim.VelocitySpoofer.Visualize.Enabled
 
                 XrgeTables.Utility.Drawings["VelocityDot"].Visible = ShowVisualizerDot
-
 
                 if XrgeLol.AntiAim.VelocitySpoofer.Enabled then
                     
@@ -1274,7 +1171,6 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
             ZIndex = 10000
         })
 
-
         XrgeTables.Utility.Drawings["CFrameVisualize"] = game:GetObjects("rbxassetid://9474737816")[1]; XrgeTables.Utility.Drawings["CFrameVisualize"].Head.Face:Destroy(); for _, v in pairs(XrgeTables.Utility.Drawings["CFrameVisualize"]:GetChildren()) do v.Transparency = v.Name == "HumanoidRootPart" and 1 or 0.70; v.Material = "Neon"; v.Color = XrgeLol.AntiAim.CSync.Visualize.Color; v.CanCollide = false; v.Anchored = false end
     end
 
@@ -1297,8 +1193,7 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
             ["cod.wav"] = "https://github.com/nyulachan/nyula/blob/main/Sounds/cod.wav?raw=true",
             ["fatality.wav"] = "https://github.com/nyulachan/nyula/blob/main/Sounds/fatality.wav?raw=true",
             ["phonk.wav"] = "https://github.com/nyulachan/nyula/blob/main/Sounds/phonk.wav?raw=true",
-            ["sparkle.wav"] = "https://github.com/nyulachan/nyula/blob/main/Sounds/sparkle.wav?raw=true",
-        }
+            ["sparkle.wav"] = "https://github.com/nyulachan/nyula/blob/main/Sounds/sparkle.wav?raw=true"}
 
         if not isfolder("hitsounds_stuff") then
             makefolder("hitsounds_stuff")
@@ -1315,7 +1210,6 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
     
     do
         
-
 
 do
 local Insane = Instance.new("Part")
@@ -1880,8 +1774,7 @@ end
             ParticleEmitter.Color = ColorSequence.new({
                 ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
                 ColorSequenceKeypoint.new(0.495, Color3.fromRGB(255, 0, 0)),
-                ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
-            })
+                ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))})
             ParticleEmitter.Lifetime = NumberRange.new(0.5, 0.5)
             ParticleEmitter.LightEmission = 1
             ParticleEmitter.LockedToPart = true
@@ -1890,8 +1783,7 @@ end
             ParticleEmitter.Size = NumberSequence.new({
                 NumberSequenceKeypoint.new(0, 1),
                 NumberSequenceKeypoint.new(1, 10),
-                NumberSequenceKeypoint.new(1, 1),
-            })
+                NumberSequenceKeypoint.new(1, 1)})
             ParticleEmitter.Speed = NumberRange.new(0, 0)
             ParticleEmitter.Texture = "rbxassetid://1084991215"
             ParticleEmitter.Transparency = NumberSequence.new({
@@ -1899,8 +1791,7 @@ end
                 NumberSequenceKeypoint.new(0, 0.1),
                 NumberSequenceKeypoint.new(0.534, 0.25),
                 NumberSequenceKeypoint.new(1, 0.5),
-                NumberSequenceKeypoint.new(1, 0),
-            })
+                NumberSequenceKeypoint.new(1, 0)})
             ParticleEmitter.ZOffset = 1
             ParticleEmitter.Parent = Attachment
             local ParticleEmitter1 = Instance.new("ParticleEmitter")
@@ -1909,8 +1800,7 @@ end
             ParticleEmitter1.Color = ColorSequence.new({
                 ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
                 ColorSequenceKeypoint.new(0.495, Color3.fromRGB(255, 0, 0)),
-                ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
-            })
+                ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))})
             ParticleEmitter1.Lifetime = NumberRange.new(0.5, 0.5)
             ParticleEmitter1.LightEmission = 1
             ParticleEmitter1.LockedToPart = true
@@ -1920,8 +1810,7 @@ end
             ParticleEmitter1.Size = NumberSequence.new({
                 NumberSequenceKeypoint.new(0, 1),
                 NumberSequenceKeypoint.new(1, 10),
-                NumberSequenceKeypoint.new(1, 1),
-            })
+                NumberSequenceKeypoint.new(1, 1)})
             ParticleEmitter1.Speed = NumberRange.new(0, 0)
             ParticleEmitter1.Texture = "rbxassetid://1084991215"
             ParticleEmitter1.Transparency = NumberSequence.new({
@@ -1929,8 +1818,7 @@ end
                 NumberSequenceKeypoint.new(0, 0.1),
                 NumberSequenceKeypoint.new(0.534, 0.25),
                 NumberSequenceKeypoint.new(1, 0.5),
-                NumberSequenceKeypoint.new(1, 0),
-            })
+                NumberSequenceKeypoint.new(1, 0)})
             ParticleEmitter1.ZOffset = 1
             ParticleEmitter1.Parent = Attachment
         end
