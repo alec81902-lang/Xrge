@@ -1,4 +1,36 @@
+--[[
 
+▒██   ██▒ ██▀███   ██▓ ▒█████  
+▒▒ █ █ ▒░▓██ ▒ ██▒▓██▒▒██▒  ██▒
+░░  █   ░▓██ ░▄█ ▒▒██▒▒██░  ██▒
+ ░ █ █ ▒ ▒██▀▀█▄  ░██░▒██   ██░
+▒██▒ ▒██▒░██▓ ▒██▒░██░░ ████▓▒░
+▒▒ ░ ░▓ ░░ ▒▓ ░▒▓░░▓  ░ ▒░▒░▒░ 
+░░   ░▒ ░  ░▒ ░ ▒░ ▒ ░  ░ ▒ ▒░ 
+ ░    ░    ░░   ░  ▒ ░░ ░ ░ ▒  
+ ░    ░     ░      ░      ░ ░  
+
+--]]
+
+
+--[[
+
+ ▄▄▄     ▄▄▄█████▓▄▄▄█████▓▓█████  ███▄    █ ▄▄▄█████▓ ██▓ ▒█████   ███▄    █ 
+▒████▄   ▓  ██▒ ▓▒▓  ██▒ ▓▒▓█   ▀  ██ ▀█   █ ▓  ██▒ ▓▒▓██▒▒██▒  ██▒ ██ ▀█   █ 
+▒██  ▀█▄ ▒ ▓██░ ▒░▒ ▓██░ ▒░▒███   ▓██  ▀█ ██▒▒ ▓██░ ▒░▒██▒▒██░  ██▒▓██  ▀█ ██▒
+░██▄▄▄▄██░ ▓██▓ ░ ░ ▓██▓ ░ ▒▓█  ▄ ▓██▒  ▐▌██▒░ ▓██▓ ░ ░██░▒██   ██░▓██▒  ▐▌██▒
+ ▓█   ▓██▒ ▒██▒ ░   ▒██▒ ░ ░▒████▒▒██░   ▓██░  ▒██▒ ░ ░██░░ ████▓▒░▒██░   ▓██░
+ ▒▒   ▓▒█░ ▒ ░░     ▒ ░░   ░░ ▒░ ░░ ▒░   ▒ ▒   ▒ ░░   ░▓  ░ ▒░▒░▒░ ░ ▒░   ▒ ▒ 
+  ▒   ▒▒ ░   ░        ░     ░ ░  ░░ ░░   ░ ▒░    ░     ▒ ░  ░ ▒ ▒░ ░ ░░   ░ ▒░
+  ░   ▒    ░        ░         ░      ░   ░ ░   ░       ▒ ░░ ░ ░ ▒     ░   ░ ░ 
+      ░  ░                    ░  ░         ░           ░      ░ ░           ░ 
+      
+ **-- ATTENTION SKIDDERS --**  
+This project was created by XR10 and contributors. Unauthorized copying, pasting, or modifying without proper credit is highly discouraged.  
+
+If you're here to "skim and skid" content, please consider learning and creating your own work instead. Respect the effort and time put into developing this project.
+
+]]--
 do
 local getinfo = getinfo or debug.getinfo
 local DEBUG = false
@@ -7,7 +39,7 @@ local Hooked = {}
 local Detected, Kill
 
 setthreadidentity(2)
-
+--LPH_NO_VIRTUALIZE(function()
 for i, v in getgc(true) do
     if typeof(v) == "table" then
         local DetectFunc = rawget(v, "Detected")
@@ -55,11 +87,12 @@ local Old; Old = hookfunction(getrenv().debug.info, newcclosure(function(...)
     
     return Old(...)
 end))
-
+--end)()
+-- setthreadidentity(9)
 setthreadidentity(7)
 end
 
-    
+    --// Services
     local Debris = game:GetService('Debris')
     local EtherealParts = Instance.new('Folder', workspace)
     EtherealParts.Name  = 'EtherealParts'
@@ -71,12 +104,12 @@ end
     local TweenService = game:GetService("TweenService")
     local ReplicatedStorage = game:GetService("ReplicatedStorage")
     local CC = Workspace.CurrentCamera
-    
+    --// Variables
     local LocalPlayer = Players.LocalPlayer
     local Camera = Workspace:FindFirstChildWhichIsA("Camera")
     local Hitsounds = {}
 
-    
+    --// Script Table
     local XrgeTables = {
         Functions = {},
         Folders = {},
@@ -103,7 +136,8 @@ end
                 ["Cum"] = nil,
                 ["Explosion"] = nil,
                 ["Slash"] = nil,
-                ["Atomic Effects"] = nil},
+                ["Atomic Effects"] = nil,
+            },
             Gun = {
                 PreviousGun = nil,
                 PreviousAmmo = 999,
@@ -146,7 +180,7 @@ end
         AuraIgnoreFolder = Instance.new("Folder", game:GetService("Workspace"))
     }
 
-    
+    --// Xrge Table
     local XrgeLol = {
         Combat = {
             Enabled = false,
@@ -206,7 +240,14 @@ end
                     Color = Color3.new(1, 1, 1)
                 },
                 Radius = 80
-            }Air = {
+            },
+            Misc = {
+        TestButtons = {
+            Spu1 = false,
+            Spu2 = false
+        }
+    },
+            Air = {
                 Enabled = true,
                 AirAimPart = {
                     Enabled = false,
@@ -217,7 +258,94 @@ end
                     Offset = 0
                 }
             }
-        }AntiAim = {
+        },
+        Visuals = {
+            Backtrack = {
+                Enabled = true,
+                Color = Color3.fromRGB(255,255,255),
+                Method = "Folllow",
+                Transparency = 0.5,
+                Material = "Plastic",
+            },
+            BulletTracers = {
+                Enabled = false,
+                Color = {
+                    Gradient1 = Color3.new(1, 1, 1),
+                    Gradient2 = Color3.new(0, 0, 0)
+                },
+                Duration = 1,
+                Fade = {
+                    Enabled = false,
+                    Duration = 0.5
+                }
+            },
+            BulletImpacts = {
+                Enabled = false,
+                Color = Color3.new(1, 1, 1),
+                Duration = 1,
+                Size = 1,
+                Material = "SmoothPlastic",
+                Fade = {
+                    Enabled = false,
+                    Duration = 0.5
+                }
+            },
+            OnHit = {
+                Enabled = false,
+                Effect = {
+                    Enabled = false,
+                    Color = Color3.new(1, 1, 1)
+                },
+                Sound = {
+                    Enabled = false,
+                    Volume = 5,
+                    Value = "hentai4.wav"
+                },
+                Chams = {
+                    Enabled = false,
+                    Color = Color3.fromRGB(255,209,220),
+                    Material = "ForceField",
+                    Duration = 1
+                }
+            },
+            World = {
+                Enabled = false,
+                Fog = {
+                    Enabled = false,
+                    Color = Color3.fromRGB(255,209,220),
+                    End = 1000,
+                    Start = 10000
+                },
+                Ambient = {
+                    Enabled = false,
+                    Color = Color3.fromRGB(255,209,220)
+                },
+                Brightness = {
+                    Enabled = false,
+                    Value = 0
+                },
+                ClockTime = {
+                    Enabled = false,
+                    Value = 24
+                },
+                WorldExposure = {
+                    Enabled = false,
+                    Value = -0.1
+                }
+            },
+            Crosshair = {
+                Enabled = false,
+                StickToTarget = false,
+                Color = Color3.new(1, 1, 1),
+                Size = 10,
+                Gap = 2,
+                Rotation = {
+                    Enabled = false,
+                    Speed = 1
+                }
+            }
+        },
+        AntiAim = {
             XHAHAHAHA = false,
             XHAHAHAHA2 = false,
             XHAHAHAHA3 = false,
@@ -268,16 +396,19 @@ end
                 FFlags = {"S2PhysicsSenderRate"}, 
                 SetNewAmount = 1,
                 Amount = 1
-            }},
+            },
+        },
         Misc = {
             Movement = {
                 Macro = {
                     Enabled = false,
-                    Speed = 0.1},
+                    Speed = 0.1,
+                },
                 Speed = {
                     Enabled = false,
                     Amount = 1
-                }},
+                },
+            },
             Exploits = {
                 Enabled = false,
                 NoRecoil = false,
@@ -356,6 +487,7 @@ game:GetService("RunService").RenderStepped:Connect(function()
 end)
 end
 
+
 local ZPred = tonumber(XrgeLol.Combat.Prediction.Horizontal)
 
 local placemarker = Instance.new("Part", game.Workspace)
@@ -385,9 +517,11 @@ end
 
 makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
 
-    
+
+
+    --// Functions
     do
-        
+        --// Utility Functions
         do
             XrgeTables.Functions.WorldToScreen = function(Position: Vector3)
                 if not Position then return end
@@ -486,13 +620,15 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
                     end
                 end
 
+
                 return Info
             end
 
             XrgeTables.Functions.Beam = function(StartPos: Vector3, EndPos: Vector3)
                 local ColorSequence = ColorSequence.new({
                     ColorSequenceKeypoint.new(0, XrgeLol.Visuals.BulletTracers.Color.Gradient1),
-                    ColorSequenceKeypoint.new(1, XrgeLol.Visuals.BulletTracers.Color.Gradient2)})
+                    ColorSequenceKeypoint.new(1, XrgeLol.Visuals.BulletTracers.Color.Gradient2),
+                })
                 local Part = Instance.new("Part", XrgeTables.AuraIgnoreFolder)
                 Part.Size = Vector3.new(0, 0, 0)
                 Part.Massless = true
@@ -590,6 +726,7 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
                 return ClosestPlayer
             end
 
+
             XrgeTables.Functions.Effect = function(Part, Color)
                 local Clone = XrgeTables.Locals.HitEffect[HitEffectsHAHAHHA]:Clone()
                 Clone.Parent = Part
@@ -599,7 +736,8 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
                         Effect.Color = ColorSequence.new({
                             ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
                             ColorSequenceKeypoint.new(0.495, XrgeLol.Visuals.OnHit.Effect.Color),
-                            ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))})
+                            ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
+                        })
                         Effect:Emit()
                     end
                 end
@@ -678,7 +816,7 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
                 return Vector2.new(NewX + Origin.x, NewY + Origin.y)
             end
         end
-        
+        --// General Functions
         do
             XrgeTables.Functions.GetClosestPlayerNumbah = function()
                 local Radius = XrgeLol.Combat.AutoSelect.Enabled and XrgeLol.Combat.Fov.Radius or math.huge
@@ -687,14 +825,14 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
 
                 for _, Player in pairs(Players:GetPlayers()) do
                     if Player ~= LocalPlayer then
-                        
+                        --// Variables
                         local ScreenPosition = XrgeTables.Functions.WorldToScreen(Player.Character.HumanoidRootPart.Position)
                         local Distance = ((workspace.CurrentCamera.ViewportSize * 0.5) - ScreenPosition.Position).Magnitude
 
-                        
+                        --// OnScreen Check
                         if not ScreenPosition.OnScreen then continue end
 
-                        
+                        --// Checks
                         if (XrgeLol.Combat.Checks.Enabled and (XrgeLol.Combat.Checks.Vehicle and Player.Character:FindFirstChild("[CarHitBox]")) or (XrgeLol.Combat.Checks.Knocked and Player.Character.BodyEffects["K.O"].Value == true) or (XrgeLol.Combat.Checks.Grabbed and Player.Character:FindFirstChild("GRABBING_CONSTRAINT")) or (XrgeLol.Combat.Checks.Crew and Player.DataFolder.Information.Crew.Value == LocalPlayer.DataFolder.Information.Crew.Value) or (XrgeLol.Combat.Checks.Wall and XrgeTables.Functions.WallCheck(Player.Character.PrimaryPart))) then continue end
 
                         if (Distance <= Radius) then
@@ -713,14 +851,14 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
 
                 for _, Player in pairs(Players:GetPlayers()) do
                     if Player ~= LocalPlayer then
-                        
+                        --// Variables
                         local ScreenPosition = XrgeTables.Functions.WorldToScreen(Player.Character.HumanoidRootPart.Position)
                         local Distance = (Mouse - ScreenPosition.Position).Magnitude
 
-                        
+                        --// OnScreen Check
                         if not ScreenPosition.OnScreen then continue end
 
-                        
+                        --// Checks
                         if (XrgeLol.Combat.Checks.Enabled and (XrgeLol.Combat.Checks.Vehicle and Player.Character:FindFirstChild("[CarHitBox]")) or (XrgeLol.Combat.Checks.Knocked and Player.Character.BodyEffects["K.O"].Value == true) or (XrgeLol.Combat.Checks.Grabbed and Player.Character:FindFirstChild("GRABBING_CONSTRAINT")) or (XrgeLol.Combat.Checks.Crew and Player.DataFolder.Information.Crew.Value == LocalPlayer.DataFolder.Information.Crew.Value) or (XrgeLol.Combat.Checks.Wall and XrgeTables.Functions.WallCheck(Player.Character.PrimaryPart))) then continue end
 
                         if (Distance < Radius) then
@@ -796,29 +934,31 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
             end
 
             XrgeTables.Functions.UpdateTargetVisuals = function()
-                
+                --// ScreenPosition, Will be changed later
                 local Position
 
-                
+                --// Variable to indicate if you"re targetting or not with a check if the target visuals are enabled
                 local IsTargetting = XrgeLol.Combat.Enabled and XrgeLol.Combat.Visuals.Enabled and XrgeTables.Locals.IsTargetting and XrgeTables.Locals.Target or false
 
-                
+                --// Change the position
                 if IsTargetting then
                     local PredictedPosition = (XrgeTables.Functions.GetTargetPredictedPosition().Position)
                     Position = XrgeTables.Functions.WorldToScreen(PredictedPosition)
                 end
 
-                
+                --// Variable to indicate if the drawing elements should show
                 local TracerShow = IsTargetting and XrgeLol.Combat.Visuals.Tracer.Enabled and Position.OnScreen or false
                 local DotShow = IsTargetting and crosshair.sticky or false
                 local ChamsShow = IsTargetting and XrgeLol.Combat.Visuals.Chams.Enabled and XrgeTables.Locals.Target and XrgeTables.Locals.Target.Character or nil
 
-                
+
+                --// Set the drawing elements visibility
                 XrgeTables.Utility.Drawings["TargetTracer"].Visible = TracerShow
                 XrgeTables.Utility.Drawings["TargetDot"].Visible = DotShow
                 XrgeTables.Utility.Drawings["TargetChams"].Parent = ChamsShow
 
-                
+
+                --// Update the drawing elements
                 if TracerShow then
                     XrgeTables.Utility.Drawings["TargetTracer"].From = UserInputService:GetMouseLocation()
                     XrgeTables.Utility.Drawings["TargetTracer"].To = Position.Position
@@ -856,7 +996,7 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
                     if CurrentGun.Tool ~= XrgeTables.Locals.Gun.PreviousGun then
                         XrgeTables.Locals.Gun.PreviousGun = CurrentGun.Tool
                         XrgeTables.Locals.Gun.PreviousAmmo = 999
-                        
+                        --// Connections
                         for _, Connection in pairs(XrgeTables.Connections.GunConnections) do
                             Connection:Disconnect()
                         end
@@ -965,13 +1105,14 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
 
                 XrgeTables.Utility.Drawings["VelocityDot"].Visible = ShowVisualizerDot
 
+
                 if XrgeLol.AntiAim.VelocitySpoofer.Enabled then
-                    
+                    --// Variables
                     local Type = XrgeLol.AntiAim.VelocitySpoofer.Type
                     local HumanoidRootPart = LocalPlayer.Character.HumanoidRootPart
                     local Velocity = HumanoidRootPart.Velocity
 
-                    
+                    --// Main
                     if Type == "Underground" then
                         HumanoidRootPart.Velocity = HumanoidRootPart.Velocity + Vector3.new(0, -XrgeLol.AntiAim.VelocitySpoofer.Yaw, 0)
                     elseif Type == "Sky" then
@@ -1102,13 +1243,13 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
             end
         end
 
-        
+        --// Esp Function
         do
 
         end
     end
 
-    
+    --// Drawing objects
     do
         XrgeTables.Utility.Drawings["FieldOfViewVisualizer"] = XrgeTables.Functions.CreateDrawing("Circle", {
             Visible = XrgeLol.Combat.Fov.Visualize.Enabled,
@@ -1171,12 +1312,13 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
             ZIndex = 10000
         })
 
+
         XrgeTables.Utility.Drawings["CFrameVisualize"] = game:GetObjects("rbxassetid://9474737816")[1]; XrgeTables.Utility.Drawings["CFrameVisualize"].Head.Face:Destroy(); for _, v in pairs(XrgeTables.Utility.Drawings["CFrameVisualize"]:GetChildren()) do v.Transparency = v.Name == "HumanoidRootPart" and 1 or 0.70; v.Material = "Neon"; v.Color = XrgeLol.AntiAim.CSync.Visualize.Color; v.CanCollide = false; v.Anchored = false end
     end
 
-    
+    --// Hitsounds
     do
-        
+        --// Hitsounds
         Hitsounds = {
             ["hentai.wav"] = "https://github.com/LionTheGreatRealFrFr/hitsounds1/raw/refs/heads/master/hentai2.mp3",
             ["hentai2.wav"] = "https://github.com/LionTheGreatRealFrFr/hitsounds1/raw/refs/heads/master/hentai1.wav",
@@ -1193,7 +1335,8 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
             ["cod.wav"] = "https://github.com/nyulachan/nyula/blob/main/Sounds/cod.wav?raw=true",
             ["fatality.wav"] = "https://github.com/nyulachan/nyula/blob/main/Sounds/fatality.wav?raw=true",
             ["phonk.wav"] = "https://github.com/nyulachan/nyula/blob/main/Sounds/phonk.wav?raw=true",
-            ["sparkle.wav"] = "https://github.com/nyulachan/nyula/blob/main/Sounds/sparkle.wav?raw=true"}
+            ["sparkle.wav"] = "https://github.com/nyulachan/nyula/blob/main/Sounds/sparkle.wav?raw=true",
+        }
 
         if not isfolder("hitsounds_stuff") then
             makefolder("hitsounds_stuff")
@@ -1207,9 +1350,10 @@ makemarker(placemarker, placemarker, Color3.fromRGB(255,209,220), 0.8, 0)
         end
     end
 
-    
+    --// Hit Effects
     do
         
+--// Crescent Slash
 
 do
 local Insane = Instance.new("Part")
@@ -1460,7 +1604,7 @@ Crescents.Parent = Attachment
 Insane.Parent = workspace
 end
 
-do 
+do --// Cosmic Explosion
 
 local Part = Instance.new("Part")
 
@@ -1588,7 +1732,7 @@ ParticleEmitter2.Parent = Attachment
 Part.Parent = workspace
 end
 
-do 
+do --// Cum
 
 local Part = Instance.new("Part")
 
@@ -1620,7 +1764,7 @@ Foam.Parent = Attachment
 Part.Parent = workspace
 end
 
-do 
+do --// Slash
 local Part = Instance.new("Part")
 Part.Parent = ReplicatedStorage
 
@@ -1652,7 +1796,7 @@ Crescents.Parent = Attachment
 Part.Parent = workspace
 end
 
-do 
+do --// Atomic Slash
 
 local Part = Instance.new("Part")
 
@@ -1757,7 +1901,7 @@ Shards.Parent = Attachment
 
 Part.Parent = workspace
 end
-        
+        --// Nova
         do
             local Part = Instance.new("Part")
             Part.Parent = ReplicatedStorage
@@ -1774,7 +1918,8 @@ end
             ParticleEmitter.Color = ColorSequence.new({
                 ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
                 ColorSequenceKeypoint.new(0.495, Color3.fromRGB(255, 0, 0)),
-                ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))})
+                ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
+            })
             ParticleEmitter.Lifetime = NumberRange.new(0.5, 0.5)
             ParticleEmitter.LightEmission = 1
             ParticleEmitter.LockedToPart = true
@@ -1783,7 +1928,8 @@ end
             ParticleEmitter.Size = NumberSequence.new({
                 NumberSequenceKeypoint.new(0, 1),
                 NumberSequenceKeypoint.new(1, 10),
-                NumberSequenceKeypoint.new(1, 1)})
+                NumberSequenceKeypoint.new(1, 1),
+            })
             ParticleEmitter.Speed = NumberRange.new(0, 0)
             ParticleEmitter.Texture = "rbxassetid://1084991215"
             ParticleEmitter.Transparency = NumberSequence.new({
@@ -1791,7 +1937,8 @@ end
                 NumberSequenceKeypoint.new(0, 0.1),
                 NumberSequenceKeypoint.new(0.534, 0.25),
                 NumberSequenceKeypoint.new(1, 0.5),
-                NumberSequenceKeypoint.new(1, 0)})
+                NumberSequenceKeypoint.new(1, 0),
+            })
             ParticleEmitter.ZOffset = 1
             ParticleEmitter.Parent = Attachment
             local ParticleEmitter1 = Instance.new("ParticleEmitter")
@@ -1800,7 +1947,8 @@ end
             ParticleEmitter1.Color = ColorSequence.new({
                 ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
                 ColorSequenceKeypoint.new(0.495, Color3.fromRGB(255, 0, 0)),
-                ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))})
+                ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0)),
+            })
             ParticleEmitter1.Lifetime = NumberRange.new(0.5, 0.5)
             ParticleEmitter1.LightEmission = 1
             ParticleEmitter1.LockedToPart = true
@@ -1810,7 +1958,8 @@ end
             ParticleEmitter1.Size = NumberSequence.new({
                 NumberSequenceKeypoint.new(0, 1),
                 NumberSequenceKeypoint.new(1, 10),
-                NumberSequenceKeypoint.new(1, 1)})
+                NumberSequenceKeypoint.new(1, 1),
+            })
             ParticleEmitter1.Speed = NumberRange.new(0, 0)
             ParticleEmitter1.Texture = "rbxassetid://1084991215"
             ParticleEmitter1.Transparency = NumberSequence.new({
@@ -1818,15 +1967,16 @@ end
                 NumberSequenceKeypoint.new(0, 0.1),
                 NumberSequenceKeypoint.new(0.534, 0.25),
                 NumberSequenceKeypoint.new(1, 0.5),
-                NumberSequenceKeypoint.new(1, 0)})
+                NumberSequenceKeypoint.new(1, 0),
+            })
             ParticleEmitter1.ZOffset = 1
             ParticleEmitter1.Parent = Attachment
         end
     end
 
-    
+    --// Connections
     do
-        
+        --// Combat Connections
         do
             XrgeTables.Functions.Connection(RunService.Heartbeat, function()
                 XrgeTables.Functions.MouseAim()
@@ -1851,7 +2001,7 @@ end
             end)
         end
 
-        
+        --// Visual Connections
         do
             XrgeTables.Functions.Connection(RunService.RenderStepped, function()
                 XrgeTables.Functions.HitShit()
@@ -1864,7 +2014,7 @@ end
             end)
         end
 
-        
+        --// Anti Aim Connection
         do
             XrgeTables.Functions.Connection(RunService.Heartbeat, function()
                 XrgeTables.Functions.XHAHAHAHA()
@@ -1881,7 +2031,7 @@ end
             end)
         end
 
-        
+        --// Movement Connections
         do
             XrgeTables.Functions.Connection(RunService.Heartbeat, function()
                 XrgeTables.Functions.Speed()
@@ -1891,7 +2041,7 @@ end
         end
     end
 
-    
+    --// Hooks
     do
         local __namecall
         local __newindex
@@ -2037,7 +2187,7 @@ TeextButton.MouseButton1Down:Connect(function()
                             library:Notification(string.format("Target: %s", XrgeTables.Locals.Target.Character.Humanoid.DisplayName), 5, library.Accent)
                         end
                     end
-
+--//rbxassetid://10734985247
 if XrgeTables.Locals.Target then
   TeextButton.Image = "rbxassetid://135595871306427"
 else
